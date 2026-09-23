@@ -27,182 +27,195 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# --- boAt Premium Dark Glassmorphism CSS with Scroll Animations ---
+# --- uAvionix Inspired Modern CSS Styling & Scroll Animations ---
 st.markdown("""
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <style>
-    /* Global Typography & Deep Dark Background */
+    /* Global Typography & Deep Avionics Background */
     html, body, [class*="css"] {
-        font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
+        font-family: 'Plus Jakarta Sans', sans-serif !important;
     }
     .stApp {
-        background: radial-gradient(circle at 15% 15%, #180507 0%, #0a0c10 50%, #05070a 100%);
+        background: radial-gradient(120% 120% at 50% 5%, #160205 0%, #080a0e 45%, #020305 100%);
         background-attachment: fixed;
         color: #f1f5f9;
     }
-
-    /* Scroll Animations & Smooth Behavior */
-    html {
-        scroll-behavior: smooth;
-    }
     
-    @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translate3d(0, 30px, 0);
-        }
-        to {
-            opacity: 1;
-            transform: translate3d(0, 0, 0);
-        }
-    }
-    
-    @keyframes pulseGlow {
-        0% { box-shadow: 0 0 15px rgba(230, 0, 0, 0.4); }
-        50% { box-shadow: 0 0 30px rgba(255, 51, 51, 0.7); }
-        100% { box-shadow: 0 0 15px rgba(230, 0, 0, 0.4); }
-    }
-
-    .scroll-reveal {
-        animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
-
-    /* Header / Hero Banner Styling */
-    .boat-hero {
-        background: linear-gradient(135deg, rgba(230, 0, 0, 0.95) 0%, rgba(120, 0, 0, 0.9) 60%, rgba(20, 5, 8, 0.95) 100%);
-        backdrop-filter: blur(12px);
-        padding: 36px 40px;
-        border-radius: 20px;
-        margin-bottom: 28px;
-        border: 1px solid rgba(255, 77, 77, 0.35);
-        box-shadow: 0 20px 40px rgba(230, 0, 0, 0.25);
-        position: relative;
-        overflow: hidden;
-    }
-    .boat-hero::before {
-        content: "";
-        position: absolute;
-        top: -50%;
-        right: -10%;
-        width: 350px;
-        height: 350px;
-        background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 70%);
-        transform: rotate(45deg);
-        pointer-events: none;
-    }
-    .boat-hero h1 {
-        color: #ffffff !important;
-        font-weight: 800;
-        font-size: 2.4rem;
-        letter-spacing: -0.5px;
-        margin-top: 8px;
-        margin-bottom: 8px;
-    }
-    .boat-hero p {
-        color: #f8fafc !important;
-        font-size: 1.15rem;
-        font-weight: 400;
-        max-width: 850px;
-        opacity: 0.95;
-    }
-    .boat-badge {
-        background: rgba(255, 255, 255, 0.2);
-        backdrop-filter: blur(8px);
-        color: #ffffff;
-        border: 1px solid rgba(255, 255, 255, 0.4);
-        padding: 6px 16px;
-        border-radius: 30px;
-        font-weight: 700;
-        font-size: 0.8rem;
-        letter-spacing: 1.5px;
-        display: inline-block;
-        text-transform: uppercase;
-    }
-
-    /* Sidebar Glassmorphism */
-    section[data-testid="stSidebar"] {
-        background-color: rgba(14, 18, 27, 0.85) !important;
+    /* uAvionix Top Sticky Telemetry Bar */
+    .uav-navbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: rgba(10, 14, 22, 0.85);
         backdrop-filter: blur(16px);
-        border-right: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    /* Metric Cards - Modern Glassmorphism & Hover Micro-interactions */
-    div[data-testid="metric-container"] {
-        background: linear-gradient(145deg, rgba(26, 32, 46, 0.7) 0%, rgba(15, 20, 30, 0.8) 100%);
-        backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 16px;
-        padding: 22px 20px;
-        transition: all 0.35s ease;
-        box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-    }
-    div[data-testid="metric-container"]:hover {
-        transform: translateY(-5px);
-        border-color: rgba(230, 0, 0, 0.5);
-        box-shadow: 0 14px 32px rgba(230, 0, 0, 0.25);
-    }
-    div[data-testid="stMetricValue"] {
-        color: #ff3333 !important;
-        font-weight: 800 !important;
-        font-size: 2.1rem !important;
-    }
-    div[data-testid="stMetricLabel"] {
-        color: #94a3b8 !important;
-        font-weight: 600 !important;
-        font-size: 0.95rem !important;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-    }
-
-    /* Glass Cards Wrapper for Charts */
-    .chart-card {
-        background: linear-gradient(145deg, rgba(20, 26, 38, 0.6) 0%, rgba(12, 16, 25, 0.7) 100%);
-        backdrop-filter: blur(14px);
-        border: 1px solid rgba(255, 255, 255, 0.07);
-        border-radius: 18px;
-        padding: 24px;
+        border: 1px solid rgba(255, 51, 51, 0.25);
+        border-radius: 40px;
+        padding: 10px 24px;
         margin-bottom: 24px;
-        transition: transform 0.3s ease, border-color 0.3s ease;
+        box-shadow: 0 10px 30px rgba(230, 0, 0, 0.15);
     }
-    .chart-card:hover {
-        border-color: rgba(230, 0, 0, 0.3);
-        transform: translateY(-3px);
-    }
-
-    /* Custom Section Headers */
-    .section-header {
-        font-size: 1.45rem;
+    .uav-brand {
+        font-family: 'Space Grotesk', sans-serif;
         font-weight: 700;
+        font-size: 1.1rem;
+        letter-spacing: 2px;
         color: #ffffff;
-        margin-top: 10px;
-        margin-bottom: 18px;
         display: flex;
         align-items: center;
         gap: 10px;
     }
+    .uav-brand-dot {
+        width: 10px;
+        height: 10px;
+        background-color: #ff3333;
+        border-radius: 50%;
+        box-shadow: 0 0 10px #ff3333;
+        animation: pulseDot 1.5s infinite;
+    }
+    @keyframes pulseDot {
+        0% { opacity: 0.4; transform: scale(0.9); }
+        50% { opacity: 1; transform: scale(1.2); }
+        100% { opacity: 0.4; transform: scale(0.9); }
+    }
+    .uav-telemetry {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.78rem;
+        color: #94a3b8;
+        letter-spacing: 1px;
+    }
+    .uav-telemetry span {
+        color: #00e676;
+        font-weight: 700;
+    }
+
+    /* Scroll Animations */
+    @keyframes uavFadeUp {
+        from { opacity: 0; transform: translateY(35px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .scroll-reveal {
+        animation: uavFadeUp 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    /* Hero Banner */
+    .boat-hero {
+        background: linear-gradient(135deg, rgba(230, 0, 0, 0.95) 0%, rgba(110, 0, 0, 0.9) 60%, rgba(15, 3, 6, 0.95) 100%);
+        backdrop-filter: blur(16px);
+        padding: 40px;
+        border-radius: 24px;
+        margin-bottom: 32px;
+        border: 1px solid rgba(255, 77, 77, 0.4);
+        box-shadow: 0 25px 50px rgba(230, 0, 0, 0.3);
+        position: relative;
+        overflow: hidden;
+    }
+    .boat-hero h1 {
+        font-family: 'Space Grotesk', sans-serif !important;
+        font-weight: 700;
+        font-size: 2.6rem;
+        letter-spacing: -0.5px;
+        margin-top: 10px;
+        color: #ffffff !important;
+    }
+    .boat-hero p {
+        font-size: 1.15rem;
+        color: #f1f5f9 !important;
+        max-width: 800px;
+    }
+
+    /* HD Product Showcase Glass Cards */
+    .product-showcase-card {
+        background: linear-gradient(145deg, rgba(22, 28, 42, 0.7) 0%, rgba(12, 16, 25, 0.85) 100%);
+        backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        border-radius: 20px;
+        padding: 20px;
+        transition: all 0.4s ease;
+        height: 100%;
+    }
+    .product-showcase-card:hover {
+        transform: translateY(-8px);
+        border-color: rgba(255, 51, 51, 0.5);
+        box-shadow: 0 16px 36px rgba(230, 0, 0, 0.3);
+    }
+    .product-title {
+        font-family: 'Space Grotesk', sans-serif;
+        font-weight: 700;
+        font-size: 1.25rem;
+        color: #ffffff;
+        margin-top: 14px;
+        margin-bottom: 6px;
+    }
+    .product-spec {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.75rem;
+        color: #ff4d4d;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+    }
+    .product-desc {
+        font-size: 0.88rem;
+        color: #94a3b8;
+        line-height: 1.5;
+    }
+
+    /* Metric Cards */
+    div[data-testid="metric-container"] {
+        background: linear-gradient(145deg, rgba(26, 32, 46, 0.75) 0%, rgba(14, 18, 28, 0.85) 100%);
+        backdrop-filter: blur(14px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 18px;
+        padding: 22px 20px;
+        transition: all 0.35s ease;
+    }
+    div[data-testid="metric-container"]:hover {
+        transform: translateY(-5px);
+        border-color: rgba(230, 0, 0, 0.5);
+        box-shadow: 0 12px 30px rgba(230, 0, 0, 0.25);
+    }
+    div[data-testid="stMetricValue"] {
+        color: #ff3333 !important;
+        font-family: 'Space Grotesk', sans-serif !important;
+        font-weight: 700 !important;
+        font-size: 2.2rem !important;
+    }
+
+    /* Chart Cards */
+    .chart-card {
+        background: linear-gradient(145deg, rgba(20, 26, 38, 0.65) 0%, rgba(11, 15, 24, 0.8) 100%);
+        backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 20px;
+        padding: 24px;
+        margin-bottom: 24px;
+        transition: all 0.35s ease;
+    }
+    .chart-card:hover {
+        border-color: rgba(255, 51, 51, 0.35);
+        box-shadow: 0 12px 28px rgba(0,0,0,0.4);
+    }
+
+    /* Section Headers */
+    .section-header {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: #ffffff;
+        margin-top: 10px;
+        margin-bottom: 18px;
+    }
     .section-header span {
-        background: linear-gradient(90deg, #ff3333, #ff6666);
+        background: linear-gradient(90deg, #ff3333, #ff8080);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
 
-    /* Streamlit DataFrame & Tables */
-    div[data-testid="stDataFrame"] {
-        border-radius: 14px;
-        overflow: hidden;
-        border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    /* Custom Dividers */
-    hr {
-        border-color: rgba(255, 255, 255, 0.08) !important;
-        margin: 32px 0 !important;
-    }
+    hr { border-color: rgba(255, 255, 255, 0.08) !important; margin: 36px 0 !important; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -212,19 +225,12 @@ SAMPLE_PATH = Path(__file__).parent.parent / "outputs" / "processed_sample.csv"
 DATA_PATH = LATEST_PATH if LATEST_PATH.exists() else SAMPLE_PATH
 SUMMARY_PATH = Path(__file__).parent.parent / "outputs" / "executive_summary_latest.txt"
 
-KNOWN_PRODUCTS = [
-    "boAt Rockerz",
-    "boAt Airdopes",
-    "boAt Wave Smartwatch"
-]
-
 @st.cache_data(ttl=60)
 def load_data(path):
     df = pd.read_csv(path)
     if "date" in df.columns:
         df["date"] = pd.to_datetime(df["date"], errors="coerce")
     
-    # Backfill product if missing / null or generic
     def fill_product(row):
         p = str(row.get("product", ""))
         if pd.isna(row.get("product")) or p == "nan" or not p.strip():
@@ -245,68 +251,111 @@ def load_data(path):
 
 df = load_data(DATA_PATH)
 
-# --- Header Banner ---
+# --- Top Navigation Telemetry Bar (uAvionix Inspired) ---
 st.markdown("""
-<div class="boat-hero scroll-reveal">
-    <div class="boat-badge">🎧 boAt INTELLIGENCE HUB</div>
-    <h1>Hardware & Customer Sentiment Intelligence</h1>
-    <p>Real-time AI Decision-Support Dashboard across E-Commerce, Retail & Social Channels</p>
+<div class="uav-navbar scroll-reveal">
+    <div class="uav-brand">
+        <div class="uav-brand-dot"></div>
+        boAt INTELLIGENCE CONTROL
+    </div>
+    <div class="uav-telemetry">
+        SYSTEM: <span>ONLINE</span> &nbsp;|&nbsp; STREAM: <span>8,555 REVIEWS</span> &nbsp;|&nbsp; STATUS: <span>OPTIMAL</span>
+    </div>
 </div>
 """, unsafe_allow_html=True)
 
-if DATA_PATH == SAMPLE_PATH:
-    st.warning("⚠️ Showing sample dataset. Run orchestrator for live scraped data.")
-else:
-    mtime = os.path.getmtime(DATA_PATH)
-    st.caption(f"🔄 **Pipeline Status**: Live Dataset Updated at **{datetime.fromtimestamp(mtime).strftime('%Y-%m-%d %H:%M')}**")
+# --- Header Hero Banner ---
+st.markdown("""
+<div class="boat-hero scroll-reveal">
+    <div style="text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; font-weight: 700; color: #ffffff; opacity: 0.9;">
+        ⚡ HARDWARE-FIRST DECISION INTELLIGENCE
+    </div>
+    <h1>boAt Executive Sentiment & Product Intelligence Hub</h1>
+    <p>High-Definition multi-channel decision support across boAt Rockerz Headphones, Airdopes TWS, and Wave Smartwatches</p>
+</div>
+""", unsafe_allow_html=True)
+
+# --- HD Product Showcase Section (uAvionix Style Grid) ---
+st.markdown("""
+<div class="section-header scroll-reveal">
+    <span>🎧 Flagship Hardware Lineup — Real-Time Health Overview</span>
+</div>
+""", unsafe_allow_html=True)
+
+pcol1, pcol2, pcol3 = st.columns(3)
+assets_dir = Path(__file__).parent / "assets"
+
+with pcol1:
+    st.markdown('<div class="product-showcase-card scroll-reveal">', unsafe_allow_html=True)
+    img_path = assets_dir / "boat_rockerz.png"
+    if img_path.exists():
+        st.image(str(img_path), use_container_width=True)
+    st.markdown("""
+    <div class="product-title">boAt Rockerz Series</div>
+    <div class="product-spec">HEADPHONES & NECKBANDS • 25H+ BATTERY</div>
+    <div class="product-desc">Signature boAt bass acoustic tuning. Primary feedback highlights bass clarity while flagging headband hinge mechanical stress points.</div>
+    </div>
+    """, unsafe_allow_html=True)
+
+with pcol2:
+    st.markdown('<div class="product-showcase-card scroll-reveal">', unsafe_allow_html=True)
+    img_path = assets_dir / "boat_airdopes.png"
+    if img_path.exists():
+        st.image(str(img_path), use_container_width=True)
+    st.markdown("""
+    <div class="product-title">boAt Airdopes Series</div>
+    <div class="product-spec">TWS EARBUDS • DUAL MIC ENx™</div>
+    <div class="product-desc">Ultra-compact magnetic charging case with instant pairing. Primary hardware focus: Dual-Mic ENC for noise isolation in calling.</div>
+    </div>
+    """, unsafe_allow_html=True)
+
+with pcol3:
+    st.markdown('<div class="product-showcase-card scroll-reveal">', unsafe_allow_html=True)
+    img_path = assets_dir / "boat_wave.png"
+    if img_path.exists():
+        st.image(str(img_path), use_container_width=True)
+    st.markdown("""
+    <div class="product-title">boAt Wave Smartwatch</div>
+    <div class="product-spec">AMOLED DISPLAY • PPG OPTICAL SENSOR</div>
+    <div class="product-desc">High-brightness AMOLED displays with multi-day battery backup. Key improvement: High-tensile fluoroelastomer sports straps.</div>
+    </div>
+    """, unsafe_allow_html=True)
+
+st.divider()
 
 # --- Sidebar Filters ---
-st.sidebar.markdown("## 🎛️ Interactive Filters")
+st.sidebar.markdown("## 🎛️ Interactive Telemetry Filters")
 st.sidebar.markdown("---")
 
-# 1. Product Filter (boAt Products)
 all_prods = sorted([str(p) for p in df["product"].dropna().unique()])
 selected_prods = st.sidebar.multiselect(
-    "🎧 Select Product Line",
+    "🎧 Product Line",
     options=all_prods,
     default=all_prods,
-    help="Filter feedback by boAt product series (Rockerz, Airdopes, Wave Smartwatches)"
+    help="Filter feedback by boAt product series"
 )
 
-# 2. Source Filter
 all_sources = sorted([str(s) for s in df["source"].dropna().unique()])
 selected_sources = st.sidebar.multiselect(
-    "🌐 Feedback Source",
+    "🌐 Feedback Channel",
     options=all_sources,
     default=all_sources
 )
 
-# 3. Sentiment Filter
 all_sentiments = sorted([str(st_lbl) for st_lbl in df["sentiment_label"].dropna().unique()])
 selected_sentiments = st.sidebar.multiselect(
-    "📊 Sentiment Category",
+    "📊 Sentiment Classification",
     options=all_sentiments,
     default=all_sentiments
 )
 
-# Active Filtering logic with fallback for empty selections
 filtered = df.copy()
-
 if selected_prods:
     filtered = filtered[filtered["product"].isin(selected_prods)]
-else:
-    st.sidebar.info("💡 Select at least one Product Line to view data.")
-
 if selected_sources:
     filtered = filtered[filtered["source"].isin(selected_sources)]
-else:
-    st.sidebar.info("💡 Select at least one Feedback Source to view data.")
-
 if selected_sentiments:
     filtered = filtered[filtered["sentiment_label"].isin(selected_sentiments)]
-else:
-    st.sidebar.info("💡 Select at least one Sentiment Category to view data.")
-
 
 # --- Top KPI Metrics ---
 st.markdown('<div class="scroll-reveal">', unsafe_allow_html=True)
@@ -318,11 +367,12 @@ neg_pct = (filtered["sentiment_label"] == "negative").mean() * 100 if len(filter
 avg_score = filtered["sentiment_score"].mean() if len(filtered) else 0
 
 col2.metric("Positive Sentiment", f"{pos_pct:.1f}%")
-col3.metric("Negative Friction", f"{neg_pct:.1f}%")
+col3.metric("Hardware Friction", f"{neg_pct:.1f}%")
 col4.metric("Avg Sentiment Index", f"{avg_score:.2f}")
 st.markdown('</div>', unsafe_allow_html=True)
 
 st.divider()
+
 
 # --- GenAI Executive Summary ---
 if SUMMARY_PATH.exists():
