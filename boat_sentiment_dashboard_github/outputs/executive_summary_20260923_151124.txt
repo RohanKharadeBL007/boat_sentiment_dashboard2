@@ -1,0 +1,17 @@
+[Rule-based fallback — set GOOGLE_API_KEY in .env for AI-generated summary]
+
+Overall: 54% positive, 22% negative across 67637 reviews.
+
+Top themes by volume:
+- good / app / best: 15599 mentions (588 negative, 13516 positive)
+- app / working / connect: 15110 mentions (5413 negative, 4910 positive)
+- watch / boat / faces: 12628 mentions (2322 negative, 7282 positive)
+
+By product:
+- boAt Crest: {'negative': 4443, 'neutral': 6117, 'positive': 17188}
+- boAt Hearables: {'negative': 2257, 'neutral': 3777, 'positive': 9914}
+- boAt Shopping: {'negative': 684, 'neutral': 308, 'positive': 643}
+- boAt Wave: {'negative': 2995, 'neutral': 2582, 'positive': 2611}
+- boAt Wearables: {'negative': 4224, 'neutral': 4012, 'positive': 5852}
+
+To get a full AI narrative: add your Gemini API key to .env as GOOGLE_API_KEY=AIza...

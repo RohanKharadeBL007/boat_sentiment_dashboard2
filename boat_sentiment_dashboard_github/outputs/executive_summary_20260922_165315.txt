@@ -1,0 +1,10 @@
+[Rule-based fallback — set GOOGLE_API_KEY in .env for AI-generated summary]
+
+Overall: 54% positive, 22% negative across 67607 reviews.
+
+Top themes by volume:
+- watch / app / boat: 22222 mentions (7961 negative, 8718 positive)
+- good / app / use: 13116 mentions (1097 negative, 10524 positive)
+- app / best / add: 10301 mentions (1466 negative, 6769 positive)
+
+To get a full AI narrative: add your Gemini API key to .env as GOOGLE_API_KEY=AIza...
