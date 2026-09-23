@@ -1,0 +1,50 @@
+name: Automated Sentiment Pipeline Run
+
+# Runs the orchestrator automatically:
+#  - on a daily schedule (cron)
+#  - on every push to main (so you see fresh output when you push new scraper data)
+#  - manually via the "Run workflow" button in the GitHub Actions tab
+on:
+  schedule:
+    - cron: "0 3 * * *"   # daily at 03:00 UTC
+  push:
+    branches: [main]
+    paths:
+      - "data/**"
+  workflow_dispatch:
+
+jobs:
+  run-pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install pandas numpy scikit-learn nltk vaderSentiment anthropic
+
+      - name: Run orchestrator (dry-run: uses committed data/*.csv)
+        # Scraping live sites from GitHub-hosted runners is unreliable
+        # (bot detection, IP blocks) and against most sites' ToS to run
+        # on a schedule from shared infrastructure. Recommended pattern:
+        # scrape locally / on a self-hosted runner, commit the CSVs to
+        # data/, and let this workflow handle preprocessing -> sentiment
+        # -> topics -> GenAI summary -> dashboard-ready output.
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          python orchestrator.py --dry-run --n_topics 6 --min_df 2
+
+      - name: Commit updated outputs
+        run: |
+          git config user.name "sentiment-pipeline-bot"
+          git config user.email "actions@github.com"
+          git add outputs/ logs/
+          git diff --staged --quiet || git commit -m "Automated pipeline run [skip ci]"
+          git push
