@@ -119,21 +119,23 @@ def load_data(path):
     if "date" in df.columns:
         df["date"] = pd.to_datetime(df["date"], errors="coerce")
     
-    # Infer product for older datasets if missing/null
-    if "product" not in df.columns or df["product"].isnull().all():
-        def infer_product(row):
+    # Backfill product if missing / null or generic
+    def fill_product(row):
+        p = str(row.get("product", ""))
+        if pd.isna(row.get("product")) or p == "nan" or not p.strip():
             txt = str(row.get("review_text", "")).lower()
             if any(k in txt for k in ["rockerz", "headphone", "earphone", "neckband"]):
                 return "boAt Rockerz"
             elif any(k in txt for k in ["airdopes", "earbud", "tws", "case", "charging"]):
                 return "boAt Airdopes"
-            elif any(k in txt for k in ["watch", "wave", "dial", "display", "step", "heart"]):
+            elif any(k in txt for k in ["watch", "wave", "dial", "display", "step", "heart", "smartwatch"]):
                 return "boAt Wave Smartwatch"
-            return "Other / Generic boAt App"
-        df["product"] = df.apply(infer_product, axis=1)
-    else:
-        df["product"] = df["product"].fillna("Other / Generic boAt App")
+            return "boAt General / Multi-category"
+        return p
     
+    df["product"] = df.apply(fill_product, axis=1)
+    df["source"] = df["source"].fillna("Other Channel")
+    df["sentiment_label"] = df["sentiment_label"].fillna("neutral")
     return df
 
 df = load_data(DATA_PATH)
@@ -158,7 +160,7 @@ st.sidebar.markdown("## 🎛️ Filter Controls")
 st.sidebar.markdown("---")
 
 # 1. Product Filter (boAt Products)
-all_prods = sorted(list(df["product"].dropna().unique()))
+all_prods = sorted([str(p) for p in df["product"].dropna().unique()])
 selected_prods = st.sidebar.multiselect(
     "🎧 Select Product Line",
     options=all_prods,
@@ -167,7 +169,7 @@ selected_prods = st.sidebar.multiselect(
 )
 
 # 2. Source Filter
-all_sources = sorted(list(df["source"].dropna().unique()))
+all_sources = sorted([str(s) for s in df["source"].dropna().unique()])
 selected_sources = st.sidebar.multiselect(
     "🌐 Feedback Source",
     options=all_sources,
@@ -175,19 +177,31 @@ selected_sources = st.sidebar.multiselect(
 )
 
 # 3. Sentiment Filter
-all_sentiments = sorted(list(df["sentiment_label"].dropna().unique()))
+all_sentiments = sorted([str(st_lbl) for st_lbl in df["sentiment_label"].dropna().unique()])
 selected_sentiments = st.sidebar.multiselect(
     "📊 Sentiment Category",
     options=all_sentiments,
     default=all_sentiments
 )
 
-# Filter Dataframe
-filtered = df[
-    df["product"].isin(selected_prods) &
-    df["source"].isin(selected_sources) &
-    df["sentiment_label"].isin(selected_sentiments)
-]
+# Active Filtering logic with fallback for empty selections
+filtered = df.copy()
+
+if selected_prods:
+    filtered = filtered[filtered["product"].isin(selected_prods)]
+else:
+    st.sidebar.info("💡 Select at least one Product Line to view data.")
+
+if selected_sources:
+    filtered = filtered[filtered["source"].isin(selected_sources)]
+else:
+    st.sidebar.info("💡 Select at least one Feedback Source to view data.")
+
+if selected_sentiments:
+    filtered = filtered[filtered["sentiment_label"].isin(selected_sentiments)]
+else:
+    st.sidebar.info("💡 Select at least one Sentiment Category to view data.")
+
 
 # --- Top KPI Metrics ---
 col1, col2, col3, col4 = st.columns(4)
